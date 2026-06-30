@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐐 ScrapeGoat v1.0 — Lead Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+      color: #e8d5a3;
+      background: radial-gradient(ellipse at top left, #1c1a14 0%, #0f0d08 60%, #1a1208 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2a1f05 0%, #3d2c08 50%, #1f1803 100%);
+      border: 1px solid #b5922a;
+      border-radius: 12px;
+      padding: 28px 24px 22px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(181,146,42,0.25), inset 0 0 60px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+
+    .header pre {
+      color: #d4aa3a;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      white-space: pre;
+    }
+
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: #f0d060;
+      text-shadow: 0 0 18px rgba(240,208,96,0.55);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      color: #a08840;
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: rgba(28, 23, 5, 0.85);
+      border: 1px solid rgba(181, 146, 42, 0.35);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+      line-height: 1.75;
+      font-size: 0.88rem;
+    }
+
+    .card strong { color: #f0d060; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .feat {
+      background: rgba(28, 23, 5, 0.7);
+      border: 1px solid rgba(181, 146, 42, 0.25);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.75rem;
+      text-align: center;
+      color: #c8a84b;
+    }
+
+    .feat span {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      color: #0f0d08;
+      background: linear-gradient(135deg, #b5922a 0%, #d4aa3a 40%, #9c7a1e 100%);
+      box-shadow: 0 4px 18px rgba(181,146,42,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 26px rgba(181,146,42,0.65);
+    }
+
+    .btn-secondary {
+      color: #c8a84b;
+      background: rgba(181, 146, 42, 0.06);
+      border: 1px solid rgba(181, 146, 42, 0.45);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(181, 146, 42, 0.14);
+      color: #f0d060;
+      border-color: #c8a84b;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 0.72rem;
+      color: rgba(168, 136, 64, 0.75);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border: 1px solid rgba(181, 146, 42, 0.35);
+      color: #c8a84b;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <pre>
+   (__)
+   (oo)   🐐  S C R A P E G O A T  v 1 . 0  🐐
+  /|--|\
+ * ||  ||
+      </pre>
+      <h1>🐐 ScrapeGoat Lead Finder</h1>
+      <p class="tagline">"We butt our heads so you don't have to."</p>
+    </header>
+
+    <section class="card">
+      <p>
+        A <strong>local business lead finder</strong> built with Python and Streamlit.
+        Enter a city and business type — ScrapeGoat searches public directories, extracts
+        <strong>names, phones, and websites</strong>, and exports a clean CSV instantly.
+      </p>
+      <div class="stack">
+        <span class="pill">Python</span>
+        <span class="pill">Streamlit</span>
+        <span class="pill">Web Scraping</span>
+        <span class="pill">CSV Export</span>
+      </div>
+    </section>
+
+    <div class="features">
+      <div class="feat"><span>🐐</span>Multi-source scraping</div>
+      <div class="feat"><span>🔥</span>Smart fallback engine</div>
+      <div class="feat"><span>📄</span>Auto CSV export</div>
+      <div class="feat"><span>⚡</span>Always returns data</div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://scrapegoat-k8s438fd6xyng4e8u7vdy5.streamlit.app/" target="_blank" rel="noopener noreferrer">
+        🚀 Launch App
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/dylanruble7/scrapegoat" target="_blank" rel="noopener noreferrer">
+        📂 Source Code
+      </a>
+    </div>
+
+    <p class="note">
+      This Netlify page is the showcase hub. The live tool runs on Streamlit Cloud.<br />
+      Baaaah! 🐐
+    </p>
+  </main>
+</body>
+</html>
